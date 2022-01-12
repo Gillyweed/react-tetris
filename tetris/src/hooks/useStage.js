@@ -8,7 +8,7 @@ export const useStage = (player, resetPlayer) => {
         const updateStage = prevStage => {
             // first flush the stage
             const newStage = prevStage.map(row =>
-                row.map(cell => (cell[1] === 'clear' ? [0, 'clear'] : cell))
+                row.map(cell => (cell[1] === 'clear' ? [0, 'clear'] : cell)),
             );
 
             // then draw the tetromino
@@ -30,7 +30,10 @@ export const useStage = (player, resetPlayer) => {
             return newStage;
         };
 
+        console.log(`pos before updateStage: [${player.pos.x}, ${player.pos.y}]`);
         setStage(prev => updateStage(prev));
+        console.log(`pos after move: [${player.pos.x}, ${player.pos.y}]`);
+
 
     }, [player, resetPlayer]);
 

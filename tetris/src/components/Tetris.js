@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { createStage, checkCollision } from "../gameHelpers";
 
 // Styled Components
@@ -35,8 +36,9 @@ const Tetris = () => {
     }
 
     const drop = () => {
+        console.log(`pos before move: [${player.pos.x}, ${player.pos.y}]`);
         if (!checkCollision(player, stage, { x: 0, y: 1})) {
-            updatePlayerPos({ x:0, y: 1, collided: false});
+            updatePlayerPos({ x: 0, y: 1, collided: false});
         } else {
             if (player.pos.y < 1) {
                 console.log("GAME OVER");
@@ -58,6 +60,7 @@ const Tetris = () => {
             } else if (keyCode === 39) {
                 movePlayer(1);
             } else if (keyCode === 40) {
+                console.log('move down');
                 dropPlayer();
             }
         }
