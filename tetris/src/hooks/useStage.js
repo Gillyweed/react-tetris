@@ -30,10 +30,7 @@ export const useStage = (player, resetPlayer) => {
             return newStage;
         };
 
-        console.log(`pos before updateStage: [${player.pos.x}, ${player.pos.y}]`);
         setStage(prev => updateStage(prev));
-        console.log(`pos after move: [${player.pos.x}, ${player.pos.y}]`);
-
 
     }, [player, resetPlayer]);
 
