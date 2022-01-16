@@ -75,6 +75,15 @@ const Tetris = () => {
         drop();
     }
 
+    const hardDrop = () => {
+        let pot = 0;
+        while (!checkCollision(player, stage, { x: 0, y: pot })) {
+           pot += 1;
+        }
+     
+        updatePlayerPos({ x: 0, y: pot-1, collided: true });
+     }
+
     const move = ({ keyCode }) => {
         if (!gameOver) {
             if (keyCode === 37) {
@@ -89,6 +98,9 @@ const Tetris = () => {
             } else if (keyCode === 38) {
                 //rotate clockwise on up button
                 playerRotate(stage, 1);
+            } else if (keyCode === 32) {
+                //drop tetromino to the bottom
+                hardDrop();
             }
         }
     }
